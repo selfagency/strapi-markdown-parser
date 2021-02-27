@@ -9,7 +9,7 @@ class StrapiMarkdown {
       this.types.standard = types
     } else {
       this.types.standard = ['richtext']
-      this.types.inline = ['string', 'text']
+      this.types.inline = ['string']
     }
 
     this.marked = require('marked')

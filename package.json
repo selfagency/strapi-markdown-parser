@@ -1,6 +1,6 @@
 {
   "name": "strapi-markdown-parser",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Strapi controller module to parse Markdown to HTML",
   "main": "index.js",
   "repository": "https://gitlab.com/selfagency/strapi-markdown-parser",
@@ -10,8 +10,11 @@
     "marked": "^2.0.0"
   },
   "devDependencies": {
+    "eslint": "^7.20.0",
     "eslint-gitignore": "^0.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^5.0.0"
+    "eslint-plugin-standard": "^5.0.0",
+    "prettier": "^2.2.1"
   }
 }

@@ -48,7 +48,7 @@ Either an object or array specifying the types in your collection's model to tra
 ```javascript
 {
   standard: ['richtext'],
-  inline: ['string', 'text']
+  inline: ['string']
 }
 ```
 
