@@ -70,13 +70,6 @@ Uses [Marked](https://marked.js.org/) as a parser and therefore options correspo
 
 - Does not currently work on Strapi components, only top-level fields. Component support to come.
 
-## Author
-
-👤 **Daniel Sieradski <daniel@self.agency>**
-
-- Website: https://self.agency
-- Twitter: [@self_agency](https://twitter.com/self_agency)
-
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
