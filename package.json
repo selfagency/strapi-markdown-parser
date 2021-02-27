@@ -1,6 +1,6 @@
 {
   "name": "strapi-markdown-parser",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Strapi controller module to parse Markdown to HTML",
   "main": "index.js",
   "repository": "https://gitlab.com/selfagency/strapi-markdown-parser",
