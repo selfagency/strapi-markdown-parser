@@ -11,18 +11,26 @@ class StrapiMarkdown {
       breaks: true
     }
   ) {
-    if (types && (types.constructor === Object || Array.isArray(types))) {
+    if (types.constructor === Object) {
       this.types = types
+    } else if (Array.isArray(types)) {
+      this.types = { standard: types }
+    } else {
+      throw new Error('`types` must be object or array')
     }
 
     if (model) {
       this.model = this.model.attributes
     } else {
-      throw new Error('StrapiMarkdown requires `model`')
+      throw new Error('`model` must be object')
     }
 
-    this.marked = require('marked')
-    this.marked.setOptions(options)
+    if (options) {
+      this.marked = require('marked')
+      this.marked.setOptions(options)
+    } else {
+      throw new Error('`options` must be object')
+    }
   }
 
   parse(data) {
