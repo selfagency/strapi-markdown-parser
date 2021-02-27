@@ -1,9 +1,11 @@
 class StrapiMarkdown {
   constructor(model, types, options) {
-    if (types.constructor === Object) {
+    this.types = {}
+
+    if (types && types.constructor === Object) {
       this.types.standard = types.standard
       this.types.inline = types.inline
-    } else if (Array.isArray(types)) {
+    } else if (types && Array.isArray(types)) {
       this.types.standard = types
     } else {
       this.types.standard = ['richtext']
@@ -12,8 +14,8 @@ class StrapiMarkdown {
 
     this.marked = require('marked')
 
-    options.markdown
-      ? this.marked.setOptions(options.marked)
+    options
+      ? this.marked.setOptions(options)
       : this.marked.setOptions({
           smartypants: true,
           headerIds: false,
