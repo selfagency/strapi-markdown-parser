@@ -20,7 +20,7 @@ class StrapiMarkdown {
     }
 
     if (model) {
-      this.model = this.model.attributes
+      this.model = model.attributes
     } else {
       throw new Error('`model` must be object')
     }
