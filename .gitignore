@@ -1,21 +1,75 @@
-
-# Created  ✓ Fetch template
-l.com/developers/gitignore/api/linux
-# Edit at https://www.toptal.com/developers/gitignore?templates=linux
-
-### Linux ###
-*~
-
-# temporary files which can be created if a process still has a handle open of a deleted file
-.fuse_hidden*
-
-# KDE directory preferences
+._*
+.apdisk
+.AppleDB
+.AppleDesktop
+.AppleDouble
+.cache
+.cache/
+.com.apple.timemachine.donotpresent
 .directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
-
-# .nfs files are created when an open file is removed but is still being accessed
+.DocumentRevisions-V100
+.DS_Store
+.dynamodb/
+.env
+.env.test
+.eslintcache
+.fseventsd
+.fuse_hidden*
+.fusebox/
+.grunt
+.lock-wscript
+.LSOverride
+.next
 .nfs*
-
-# End of https://www.toptal.com/developers/gitignore/api/linux
+.node_repl_history
+.npm
+.nuxt
+.nyc_output
+.parcel-cache
+.pnp.*
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.serverless/
+.Spotlight-V100
+.TemporaryItems
+.tern-port
+.Trash-*
+.Trashes
+.VolumeIcon.icns
+.vscode-test
+.vuepress/dist
+.yarn-integrity
+.yarn/build-state.yml
+.yarn/cache
+.yarn/install-state.gz
+.yarn/unplugged
+*.lcov
+*.log
+*.pid
+*.pid.lock
+*.seed
+*.tgz
+*.tsbuildinfo
+*~
+bower_components
+build/Release
+coverage
+dist
+Icon
+jspm_packages/
+l.com/developers/gitignore/api/linux
+lerna-debug.log*
+lib-cov
+logs
+Network Trash Folder
+node_modules/
+npm-debug.log*
+out
+pids
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+Temporary Items
+web_modules/
+yarn-debug.log*
+yarn-error.log*
