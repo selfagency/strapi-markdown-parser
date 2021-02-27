@@ -16,7 +16,7 @@ yarn add strapi-markdown-parser
 Open your collection or single type's controller file (eg., `./api/{COLLECTION}/controllers/${COLLECTION}.js`), and add the following, substituting your collection or single type's name in the place of `{COLLECTION}`:
 
 ```javascript
-const StrapiMarkdown = 'strapi-markdown-parser'
+const StrapiMarkdown = require('strapi-markdown-parser')
 const model = require('../models/{COLLECTION}.settings.json')
 
 const { md } = new StrapiMarkdown(model)
@@ -33,13 +33,15 @@ module.exports = {
 
 ### Full Parameters
 
-StrapiMarkdown(`model`, `types`, `options`)
+```javascript
+const { md } = StrapiMarkdown(model, types, options)
+```
 
-#### `model` (`Object`)
+#### `model`
 
-Your model's JSON settings file, eg. `./api/{collection}/models/{collection}.settings.json`.
+JSON object containing your model's settings, eg. `./api/{collection}/models/{collection}.settings.json`.
 
-#### `types` (`Object || Array`)
+#### `types`
 
 Either an object or array specifying the types in your collection's model to transform to HTML. If an array, all fields will be treated as standard markdown and therefore paragraphs will be wrapped in `<p>` tags. If an object, types specified under `standard` will be wrapped in `<p>` tags, an those specified `inline` will not.
 
@@ -52,7 +54,7 @@ Either an object or array specifying the types in your collection's model to tra
 }
 ```
 
-#### `options` (`Object`)
+#### `options`
 
 Uses [Marked](https://marked.js.org/) as a parser and therefore options correspond to the [Marked API](https://marked.js.org/using_advanced#options).
 

@@ -34,24 +34,32 @@ class StrapiMarkdown {
   }
 
   parse = data => {
-    for (let key in this.model) {
-      if (this.types.standard && this.types.standard.includes(this.model[key].type)) {
-        const out = this.marked(data[key] || '')
-        data[key] = out.length ? out : null
-      } else if (this.types.inline && this.types.inline.includes(this.model[key].type)) {
-        const out = this.marked.parseInline(data[key] || '')
-        data[key] = out.length ? out : null
+    try {
+      for (let key in this.model) {
+        if (this.types.standard && this.types.standard.includes(this.model[key].type)) {
+          const out = this.marked(data[key] || '')
+          data[key] = out.length ? out : null
+        } else if (this.types.inline && this.types.inline.includes(this.model[key].type)) {
+          const out = this.marked.parseInline(data[key] || '')
+          data[key] = out.length ? out : null
+        }
       }
-    }
 
-    return data
+      return data
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   md = data => {
-    if (Array.isArray(data)) {
-      return data.map(obj => this.parse(obj))
-    } else {
-      return this.parse(data)
+    try {
+      if (Array.isArray(data)) {
+        return data.map(obj => this.parse(obj))
+      } else {
+        return this.parse(data)
+      }
+    } catch (err) {
+      console.error(err)
     }
   }
 }
