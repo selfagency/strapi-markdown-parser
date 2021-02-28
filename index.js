@@ -20,6 +20,8 @@ class StrapiMarkdown {
 
     if (types && types.standard && Array.isArray(types.standard) && types.inline && Array.isArray(types.inline)) {
       this.types = types
+    } else if (types && Array.isArray(types)) {
+      this.types = { standard: types, inline: [] }
     } else {
       throw new Error('`types` must be object containing `standard` and `inline` arrays')
     }
