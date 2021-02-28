@@ -26,7 +26,8 @@ module.exports = {
     return md(await strapi.services.{COLLECTION}.find())
   },
   async findOne(ctx) {
-    return md(await strapi.services.{COLLECTION}.findOne())
+    const { id } = ctx.params
+    return md(await strapi.services.{COLLECTION}.findOne({ id }))
   }
 }
 ```
