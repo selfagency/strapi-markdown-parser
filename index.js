@@ -33,19 +33,20 @@ class StrapiMarkdown {
     }
   }
 
-  parse = data => {
+  parse = async data => {
+    const item = await data
+
     try {
       for (let key in this.model) {
-        if (this.types.standard && this.types.standard.includes(this.model[key].type)) {
-          const out = this.marked(data[key] || '')
-          data[key] = out.length ? out : null
-        } else if (this.types.inline && this.types.inline.includes(this.model[key].type)) {
-          const out = this.marked.parseInline(data[key] || '')
-          data[key] = out.length ? out : null
+        if (item[key]) {
+          if (this.types.standard.includes(this.model[key].type)) {
+            item[key] = this.marked(item[key])
+          } else if (this.types.inline.includes(this.model[key].type)) {
+            item[key] = this.marked.parseInline(item[key])
+          }
         }
       }
-
-      return data
+      return item
     } catch (err) {
       console.error(err)
     }
@@ -54,9 +55,11 @@ class StrapiMarkdown {
   md = data => {
     try {
       if (Array.isArray(data)) {
-        return data.map(obj => this.parse(obj))
+        const out = Promise.all(data.map(obj => this.parse(obj)))
+        return out
       } else {
-        return this.parse(data)
+        const out = this.parse(data)
+        return out
       }
     } catch (err) {
       console.error(err)
