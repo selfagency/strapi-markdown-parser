@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 [![Twitter: self_agency](https://img.shields.io/twitter/follow/self_agency.svg?style=social)](https://twitter.com/self_agency)
 
-Strapi controller module to parse Markdown to HTML. [Read a break down of how it works on Dev.to.](https://dev.to/selfagency/render-markdown-as-html-in-strapi-using-controllers-3e7a)
+Strapi controller module to parse Markdown to HTML.
 
 ## Install
 
@@ -13,14 +13,44 @@ yarn add strapi-markdown-parser
 
 ## Use
 
-Open your collection or single type's controller file (eg., `./api/{COLLECTION}/controllers/${COLLECTION}.js`), and add the following, substituting your collection or single type's name in the place of `{COLLECTION}`:
+Open your collection or single type's controller file (eg., `./api/{COLLECTION}/controllers/${COLLECTION}.js`), and add the following, substituting your collection or single type's name in the place of `{COLLECTION}`. You can specify field names directly, or use the `fieldsByType` helper utility to get the field names matching any specified datatypes. This module uses [Marked](https://marked.js.org/) as its parser, therefore options correspond to the [Marked API](https://marked.js.org/using_advanced#options).
 
 ```javascript
-const StrapiMarkdown = require('strapi-markdown-parser')
+// Import parser, helper utility, and collection/component models
+const { StrapiMarkdown, fieldsByType } = require('strapi-markdown-parser')
 const model = require('../models/{COLLECTION}.settings.json')
+const componentA = require('../../../components/{CATEGORY}/{COMPONENT}.json')
+const componentB = require('../../../components/{CATEGORY}/{COMPONENT}.json')
 
-const { md } = new StrapiMarkdown(model)
+// Standard fields are wrapped in <p> tags
+const standardFields = ['body', 'summary']
 
+// Inline fields are not wrapped in <p> tags
+const inlineFields = ['title', 'photo.caption'],
+
+    // Get field names by type using helper utility
+    const standardFields = fieldsByType(model, ['richtext'])
+    const inlineFields = fieldsByType(model, ['string', 'text'])
+
+    // Get field names by type, including components
+    const standardFields = fieldsByType([model, componentA], ['richtext'])
+    const inlineFields = fieldsByType([model, componentA, componentB], ['string', 'text'])
+
+    // Special feature: Include captions from all Strapi file upload types
+    const standardFields = ['caption', ...fieldsByType(model, ['richtext'])]
+    const inlineFields = fieldsByType(model, ['string'])
+
+// 3. Options for Marked Markdown parser (defaults shown)
+const options = {
+  smartypants: true,
+  headerIds: false,
+  breaks: true
+}
+
+// Instantiate class
+const { md } = new StrapiMarkdown(standardFields, inlineFields, options)
+
+// Modify response data
 module.exports = {
   async find(ctx) {
     const data = await strapi.services.{COLLECTION}.find(ctx.query)
@@ -35,47 +65,6 @@ module.exports = {
   }
 }
 ```
-
-### Full Parameters
-
-```javascript
-const { md } = StrapiMarkdown(model, types, options)
-```
-
-#### `model`
-
-JSON object containing your model's settings, eg. `./api/{collection}/models/{collection}.settings.json`.
-
-#### `types`
-
-Either an object or array specifying the types in your collection's model to transform to HTML. If an array, all fields will be treated as standard markdown and therefore paragraphs will be wrapped in `<p>` tags. If an object, types specified under `standard` will be wrapped in `<p>` tags, an those specified `inline` will not.
-
-**Defaults:**
-
-```javascript
-{
-  standard: ['richtext'],
-  inline: ['string']
-}
-```
-
-#### `options`
-
-Uses [Marked](https://marked.js.org/) as a parser and therefore options correspond to the [Marked API](https://marked.js.org/using_advanced#options).
-
-**Defaults:**
-
-```javascript
-{
-  smartypants: true,
-  headerIds: false,
-  breaks: true
-}
-```
-
-### Known Issues
-
-- Does not currently work on Strapi components, only top-level fields. Component support to come.
 
 ## 🤝 Contributing
 

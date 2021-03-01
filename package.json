@@ -1,12 +1,13 @@
 {
   "name": "strapi-markdown-parser",
-  "version": "0.0.15",
+  "version": "0.1.0",
   "description": "Strapi controller module to parse Markdown to HTML",
   "main": "index.js",
   "repository": "https://gitlab.com/selfagency/strapi-markdown-parser",
   "author": "Daniel Sieradski <daniel@self.agency>",
   "license": "MIT",
   "dependencies": {
+    "flat": "^5.0.2",
     "marked": "^2.0.0"
   },
   "devDependencies": {
