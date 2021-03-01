@@ -40,7 +40,7 @@ const inlineFields = ['title', 'photo.caption']
     const standardFields = ['caption', ...fieldsByType(model, ['richtext'])]
     const inlineFields = fieldsByType(model, ['string'])
 
-// 3. Options for Marked Markdown parser (defaults shown)
+// Options for Marked Markdown parser (defaults shown)
 const options = {
   smartypants: true,
   headerIds: false,
