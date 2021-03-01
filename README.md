@@ -26,7 +26,7 @@ const componentB = require('../../../components/{CATEGORY}/{COMPONENT}.json')
 const standardFields = ['body', 'summary']
 
 // Inline fields are not wrapped in <p> tags
-const inlineFields = ['title', 'photo.caption'],
+const inlineFields = ['title', 'photo.caption']
 
     // Get field names by type using helper utility
     const standardFields = fieldsByType(model, ['richtext'])
