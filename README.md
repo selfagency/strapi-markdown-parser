@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 [![Twitter: self_agency](https://img.shields.io/twitter/follow/self_agency.svg?style=social)](https://twitter.com/self_agency)
 
-Strapi controller module to parse Markdown to HTML.
+Strapi controller module to parse Markdown to HTML. [Read a break down of how it works on Dev.to.](https://dev.to/selfagency/render-markdown-as-html-in-strapi-using-controllers-3e7a)
 
 ## Install
 

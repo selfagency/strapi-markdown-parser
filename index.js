@@ -20,8 +20,6 @@ class StrapiMarkdown {
 
     if (types && types.standard && Array.isArray(types.standard) && types.inline && Array.isArray(types.inline)) {
       this.types = types
-    } else if (types && Array.isArray(types)) {
-      this.types = { standard: types, inline: [] }
     } else {
       throw new Error('`types` must be object containing `standard` and `inline` arrays')
     }
@@ -35,9 +33,9 @@ class StrapiMarkdown {
   }
 
   parse = async data => {
-    const item = await data
-
     try {
+      const item = await data
+
       for (let key in this.model) {
         if (item[key]) {
           if (this.types.standard.includes(this.model[key].type)) {
@@ -56,11 +54,9 @@ class StrapiMarkdown {
   md = data => {
     try {
       if (Array.isArray(data)) {
-        const out = Promise.all(data.map(obj => this.parse(obj)))
-        return out
+        return Promise.all(data.map(obj => this.parse(obj)))
       } else {
-        const out = this.parse(data)
-        return out
+        return this.parse(data)
       }
     } catch (err) {
       console.error(err)
