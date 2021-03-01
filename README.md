@@ -23,11 +23,15 @@ const { md } = new StrapiMarkdown(model)
 
 module.exports = {
   async find(ctx) {
-    return md(await strapi.services.{COLLECTION}.find())
+    const data = await strapi.services.{COLLECTION}.find(ctx.query)
+
+    return md(data)
   },
   async findOne(ctx) {
     const { id } = ctx.params
-    return md(await strapi.services.{COLLECTION}.findOne({ id }))
+    const data = await strapi.services.{COLLECTION}.findOne({ id })
+
+    return md(data)
   }
 }
 ```
