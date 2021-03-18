@@ -1,4 +1,4 @@
-const { flatten, unflatten } = require('flat')
+const { flatten, unflatten } = require('safe-flat')
 
 const defaults = {
   options: {
@@ -32,7 +32,7 @@ class StrapiMarkdown {
 
   parse = async data => {
     try {
-      const item = flatten(await data)
+      const item = flatten(await flatten(data)['0'])
 
       for (let key in item) {
         const repeatable = `${key.split('.')[0]}[i].${key.split('.')[2]}`
@@ -102,7 +102,7 @@ function fieldsByType(model, types) {
       if (attrType === 'component') {
         const repeatable = current.repeatable
         let name = current.component
-        let componentModel = components.filter(c => c.collectionName.includes(name.replace('.', '_')))
+        let componentModel = components.filter(c => c.collectionName.includes(name.replace(/\./g, '_')))
 
         if (componentModel.length) {
           name = componentModel[0].collectionName.replace(`components_${name.replace(/\..+$/, '')}_`, '')

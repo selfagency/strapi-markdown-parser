@@ -13,7 +13,7 @@ yarn add strapi-markdown-parser
 
 ## Use
 
-Open your collection or single type's controller file (eg., `./api/{COLLECTION}/controllers/${COLLECTION}.js`), and add the following, substituting your collection or single type's name in the place of `{COLLECTION}`. You can specify field names directly, or use the `fieldsByType` helper utility to get the field names matching any specified datatypes. This module uses [Marked](https://marked.js.org/) as its parser, therefore options correspond to the [Marked API](https://marked.js.org/using_advanced#options).
+Open your collection or single type's controller file (eg., `./api/{COLLECTION}/controllers/${COLLECTION}.js`), and add the following, substituting your collection or single type's name in the place of `{COLLECTION}`. You can specify field names directly, or use the `fieldsByType` helper utility to get the fields from the provided model matching the specified datatypes. This module uses [Marked](https://marked.js.org/) as its parser, therefore options correspond to the [Marked API](https://marked.js.org/using_advanced#options).
 
 ```javascript
 // Import parser, helper utility, and collection/component models

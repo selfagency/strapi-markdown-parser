@@ -7,8 +7,8 @@
   "author": "Daniel Sieradski <daniel@self.agency>",
   "license": "MIT",
   "dependencies": {
-    "flat": "^5.0.2",
-    "marked": "^2.0.0"
+    "marked": "^2.0.0",
+    "safe-flat": "^2.0.2"
   },
   "devDependencies": {
     "eslint": "^7.20.0",
