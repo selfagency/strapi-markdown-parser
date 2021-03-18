@@ -32,7 +32,7 @@ class StrapiMarkdown {
 
   parse = async data => {
     try {
-      const item = flatten(await flatten(data)['0'])
+      const item = flatten(await data)
 
       for (let key in item) {
         const repeatable = `${key.split('.')[0]}[i].${key.split('.')[2]}`
