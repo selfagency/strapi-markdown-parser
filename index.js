@@ -60,8 +60,9 @@ class StrapiMarkdown {
     }
   }
 
-  md = data => {
+  md = async data => {
     try {
+      data = await data
       if (Array.isArray(data)) {
         return Promise.all(data.map(obj => this.parse(obj)))
       } else {
